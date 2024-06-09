@@ -1,6 +1,9 @@
+import Steps.WebSteps;
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -18,6 +21,11 @@ public class IssueNameTest {
         Configuration.baseUrl = "https://github.com/";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 6000;
+    }
+
+    @AfterEach
+    void afterEach() {
+        Selenide.closeWebDriver();
     }
 
     @DisplayName("Проверка названия issue")
